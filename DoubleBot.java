@@ -1,3 +1,5 @@
+package KarelLabFive;
+
 
 
 
@@ -12,8 +14,7 @@ import kareltherobot.*;
 public class DoubleBot extends Robot
 {
     // instance variables - replace the example below with your own
-    public int beepers;
-
+    public int numBeepers;
     /**
      * Constructor for objects of class Template
      */
@@ -23,7 +24,31 @@ public class DoubleBot extends Robot
 
     public void doubleBeepers()
     {
-        // put your code here
+        move();
+        
+        countBeepers();
+        putBeepersBack();
+        move();
+        putTwiceNumBeepers();
+        move();
+    }
+    public void countBeepers(){
+            while(nextToABeeper()){
+            pickBeeper();
+            numBeepers++;
+        }
+    }
+    public void putBeepersBack(){
+        int temp = numBeepers;
+        while (0 < temp){
+            putBeeper();
+            temp--;
+        }
         
     }
-}
+    public void putTwiceNumBeepers(){
+        for(int i = 0 ; i < 2*numBeepers ; i++) {
+            putBeeper();
+        }
+    }
+}   
